@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="img/contcont.png" type="image/svg+xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>guide - PlayEdge</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, #dfdfe1 0%, #dddee0 100%);
+            padding: 60px 0;
+            border-radius: 0 0 50px 50px;
+            margin-bottom: 40px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 3px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 20px;
+        }
+
+        .guide-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .guide-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .guide-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .accordion-custom .accordion-item {
+            background: white;
+            border: none;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .accordion-custom .accordion-button {
+            background-color: white;
+            color: var(--brown-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 20px 25px;
+            border-radius: 20px;
+        }
+
+        .accordion-custom .accordion-button:not(.collapsed) {
+            background: linear-gradient(135deg, #dfdfe1 0%, #dddee0 100%);
+            color: var(--brown-color);
+            box-shadow: none;
+        }
+
+        .accordion-custom .accordion-button::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2378350f'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+
+        .accordion-custom .accordion-body {
+            padding: 25px;
+            background-color: #fefefe;
+        }
+
+        .step-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 80px;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, #dfdfe1 0%, #dddee0 100%);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .checklist li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 25px;
+            height: 25px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .search-box {
+            background: white;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 8px;
+            margin-bottom: 30px;
+        }
+
+        .search-box input {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            width: 100%;
+        }
+
+        .search-box input:focus {
+            outline: none;
+        }
+
+        .search-box button {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+        }
+
+        .tag-badge {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--primary-color);
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        footer {
+            background-color: var(--brown-color);
+            color: white;
+            padding: 40px 0;
+            margin-top: 80px;
+            border-radius: 50px 50px 0 0;
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: #e5e7eb;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .step-card {
+                padding-left: 20px;
+                padding-top: 80px;
+            }
+
+            .step-number {
+                left: 50%;
+                transform: translateX(-50%);
+                top: 15px;
+            }
+
+            .category-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+
+            .guide-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+
+        .search-box button {
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgb(95, 95, 95);
+            height: 100%;
+        }
+
+        .feature-card {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: 2px solid transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-color);
+            background-color: #ffffff;
+        }
+
+        .feature-card img {
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .feature-card:hover h5 {
+            color: var(--primary-color) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ナビゲーションバー -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-controller"></i> PlayEdge
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="device-guide-list.html">Devices</a></li>
+                    <li class="nav-item"><a class="nav-link" href="device-guide.html">Guide</a></li>
+                    <li class="nav-item"><a class="nav-link" href="device-guide-qa.html">Support</a></li>
+                    <li class="nav-item"><a class="nav-link" href="device-guide-record.html">Records</a></li>
+                    <li class="nav-item ms-lg-4">
+                        <a class="nav-link btn-login-cool" href="login.html">
+                            <i class="bi bi-person"></i> LOGIN
+                        </a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="nav-link btn-post-cool" href="device-guide-form.html">
+                            POST
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ページヘッダー -->
+    <div class="page-header">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="display-4 fw-bold mb-3" style="color: var(--brown-color);">
+                    <i class="bi bi-book"></i> デバイスガイド
+                </h1>
+                <p class="lead" style="color: var(--brown-color);">
+                    ご希望のデバイスの説明書を検索できます。
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 検索ボックス -->
+        <div class="search-box">
+            <div class="d-flex align-items-center">
+                <input type="text" class="flex-grow-1" placeholder="説明書を検索...（例：G304、RAZER NAGA X）">
+                <button type="button">
+                    <i class="bi bi-search"></i><span>検索</span>
+                </button>
+            </div>
+        </div>
+
+
+        <!-- カテゴリから探す -->
+        <section class="mb-5">
+            <h2 class="text-center fw-bold section-title" style="color: var(--brown-color);">
+                <i class="bi bi-grid-3x3-gap-fill"></i> メーカーから探す
+            </h2>
+            <p class="text-center text-muted mb-5">好みのメーカーを選択</p>
+
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
+                    <a href="#" class="text-decoration-none">
+                        <div class="feature-card">
+                            <img src="img/razer.png" style="width: auto; height: 80px;">
+                            <h5 class="fw-bold" style="color: var(--brown-color);">RAZER</h5>
+                            <small class="text-muted">120種類</small>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="#" class="text-decoration-none">
+                        <div class="feature-card">
+                            <img src="img/logo_icon_181377.png" style="width: auto; height: 80px;">
+                            <h5 class="fw-bold" style="color: var(--brown-color);">logicool</h5>
+                            <small class="text-muted">150種類</small>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="#" class="text-decoration-none">
+                        <div class="feature-card">
+                            <img src="img/logo_rog.png" style="width: auto; height: 80px;">
+                            <h5 class="fw-bold" style="color: var(--brown-color);">ASUS ROG</h5>
+                            <small class="text-muted">100種類</small>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="#" class="text-decoration-none">
+                        <div class="feature-card">
+                            <img src="img/msi.png" style="width: auto; height: 80px;">
+                            <h5 class="fw-bold" style="color: var(--brown-color);">MSI</h5>
+                            <small class="text-muted">70種類</small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="row">
+        <!-- メインコンテンツ -->
+        <div class="col-lg-8">
+            <!-- 人気ガイド -->
+            <section class="mb-5">
+                <h3 class="fw-bold mb-4" style="color: var(--brown-color);">
+                    <i class="bi bi-star-fill text-secondary"></i> よく見られている説明書
+                </h3>
+
+                <div class="guide-card">
+                    <div class="d-flex align-items-center">
+                        <div class="guide-icon"
+                            style="background: rgba(192, 255, 216, 0.432); color: var(--primary-color);">
+                            <i class="bi bi-keyboard"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h5 class="fw-bold mb-1" style="color: var(--brown-color);">Razer BlackWidow V4 Pro
+                            </h5>
+                            <p class="text-muted mb-2 small">公式説明書</p>
+                            <div>
+                                <span class="tag-badge">キーボード</span>
+                                <span class="tag-badge">RAZER</span>
+                            </div>
+                        </div>
+                        <i class="bi bi-chevron-right fs-4" style="color: var(--primary-color);"></i>
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <div class="d-flex align-items-center">
+                        <div class="guide-icon" style="background: rgba(96, 71, 255, 0.1); color: var(--accent-color);">
+                            <i class="bi bi-mouse3"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h5 class="fw-bold mb-1" style="color: var(--brown-color);">G502 X PLUS LIGHTSPEED</h5>
+                            <p class="text-muted mb-2 small">公式説明書</p>
+                            <div>
+                                <span class="tag-badge">logicool</span>
+                                <span class="tag-badge">マウス</span>
+                            </div>
+                        </div>
+                        <i class="bi bi-chevron-right fs-4" style="color: var(--primary-color);"></i>
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <div class="d-flex align-items-center">
+                        <div class="guide-icon" style="background: rgba(255, 28, 28, 0.1); color: #ef4444;">
+                            <i class="bi bi-display"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h5 class="fw-bold mb-1" style="color: var(--brown-color);">- ROG Strix / ROG Swift OLED
+                            </h5>
+                            <p class="text-muted mb-2 small">公式説明書</p>
+                            <div>
+                                <span class="tag-badge">ASUS</span>
+                                <span class="tag-badge">ROG</span>
+                                <span class="tag-badge">モニター</span>
+                            </div>
+                        </div>
+                        <i class="bi bi-chevron-right fs-4" style="color: var(--primary-color);"></i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 詳細ガイド: 犬の飼い方 -->
+            <section class="mb-5">
+                <h3 class="fw-bold mb-4" style="color: var(--brown-color);">
+                    <i class="bi bi-book-half"></i> デバイスを買ったするべきことと
+                </h3>
+
+                <div class="accordion accordion-custom" id="dogGuideAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#step1">
+                                <i class="bi bi-1-circle-fill me-2" style="color: var(--primary-color);"></i>
+                                するべきこと
+                            </button>
+                        </h2>
+                        <div id="step1" class="accordion-collapse collapse show" data-bs-parent="#dogGuideAccordion">
+                            <div class="accordion-body">
+                                <h5 class="fw-bold mb-3">必要ことリスト</h5>
+                                <ul class="checklist">
+                                    <li>保証書は保管する</li>
+                                    <li>充電する</li>
+                                    <li>説明書を読む</li>
+                                </ul>
+
+                                <div class="tip-box">
+                                    <h6 class="fw-bold mb-2">
+                                        <i class="bi bi-lightbulb-fill text-warning"></i> ワンポイントアドバイス
+                                    </h6>
+                                </div>
+                                <p>先に机の上など整理しておこう</p>
+                                <ul>
+                                    <li>電源供給の場所はどこか</li>
+                                    <li>不良品ではないか確認</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#step2">
+                                <i class="bi bi-2-circle-fill me-2" style="color: var(--primary-color);"></i>
+                                買ったらすること
+                            </button>
+                        </h2>
+                        <div id="step2" class="accordion-collapse collapse" data-bs-parent="#dogGuideAccordion">
+                            <div class="accordion-body">
+                                <h5 class="fw-bold mb-3">手順</h5>
+
+                                <div class="step-card">
+                                    <div class="step-number">1</div>
+                                    <h6 class="fw-bold mb-2">到着後すぐ</h6>
+                                    <p class="mb-0">箱を開封しましょう。</p>
+                                </div>
+
+                                <div class="step-card">
+                                    <div class="step-number">2</div>
+                                    <h6 class="fw-bold mb-2">中身の確認</h6>
+                                    <p class="mb-0">傷がついてないか、保証書があるかなどの確認</p>
+                                </div>
+
+                                <div class="step-card">
+                                    <div class="step-number">3</div>
+                                    <h6 class="fw-bold mb-2">説明書を読む</h6>
+                                    <p class="mb-0">しっかり使い方を読んでおきましょう</p>
+                                </div>
+
+                                <div class="step-card">
+                                    <div class="step-number">4</div>
+                                    <h6 class="fw-bold mb-2">充電</h6>
+                                    <p class="mb-0">いつでも使えるように充電しおきましょうう</p>
+                                </div>
+
+                                <div class="warning-box">
+                                    <h6 class="fw-bold mb-2">
+                                        <i class="bi bi-exclamation-triangle-fill text-warning"></i> 注意事項
+                                    </h6>
+                                    <ul class="mb-0">
+                                        <li>保証書は保管する</li>
+                                        <li>説明書は保管する</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#step3">
+                                <i class="bi bi-3-circle-fill me-2" style="color: var(--primary-color);"></i>
+                                まとめ
+                            </button>
+                        </h2>
+                        <div id="step3" class="accordion-collapse collapse" data-bs-parent="#dogGuideAccordion">
+                            <div class="accordion-body">
+                                <p class="mb-3">
+                                    デバイスを購入したら、まずは保証書や説明書を保管し、充電や初期設定を行いましょう。
+                                    アップデートや動作確認も忘れずに行うことで、安心して長く使えます。
+                                </p>
+                                <div class="tip-box">
+                                    <h6 class="fw-bold mb-2">
+                                        <i class="bi bi-lightbulb-fill text-warning"></i> 最後のアドバイス
+                                    </h6>
+                                    <p class="mb-0">定期的にメンテナンスや清掃を行う
+                                </div>
+
+            </section>
+        </div>
+
+        <!-- サイドバー -->
+        <div class="col-lg-4">
+            <!-- 動画ガイド -->
+            <div class="guide-card mb-4">
+                <h5 class="fw-bold mb-3" style="color: var(--brown-color);">
+                    <i class="bi bi-play-circle"></i> 動画ガイド
+                </h5>
+                <div class="video-thumbnail">
+                    <i class="bi bi-play-circle-fill"></i>
+                </div>
+                <h6 class="fw-bold mb-2">Razer BlackWidow V4 Proの説明</h6>
+                <p class="text-muted small mb-3">再生時間: 15:32</p>
+                <button class="btn btn-primary w-100 rounded-pill">
+                    <i class="bi bi-play-fill"></i> 再生する
+                </button>
+            </div>
+
+            <!-- おすすめ記事 -->
+            <div class="guide-card mb-4">
+                <h5 class="fw-bold mb-3" style="color: var(--brown-color);">
+                    <i class="bi bi-bookmark-star"></i> おすすめ記事
+                </h5>
+                <div class="mb-3 pb-3 border-bottom">
+                    <h6 class="fw-bold mb-1 small">ゲーミングPCの性能比較表</h6>
+                    <p class="text-muted small mb-0">あなたに最適なスペックはどれ？</p>
+                </div>
+                <div class="mb-3 pb-3 border-bottom">
+                    <h6 class="fw-bold mb-1 small">ゲーミングデバイス選びの基礎</h6>
+                    <p class="text-muted small mb-0">マウス・キーボード・ヘッドセットの選び方</p>
+                </div>
+                <div class="mb-0">
+                    <h6 class="fw-bold mb-1 small">FPS向けおすすめ設定ガイド</h6>
+                    <p class="text-muted small mb-0">勝率を上げるための環境構築</p>
+                </div>
+            </div>
+
+            <!-- 人気ランキング -->
+            <div class="guide-card">
+                <h5 class="fw-bold mb-3" style="color: var(--brown-color);">
+                    <i class="bi bi-fire"></i> 人気ランキング
+                </h5>
+                <ol class="ps-3">
+                    <li class="mb-2">
+                        <a href="#" class="text-decoration-none text-dark">
+                            <small class="fw-bold">最強ゲーミングマウスTOP10</small>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="text-decoration-none text-dark">
+                            <small class="fw-bold">初心者向けゲーミングPC入門</small>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="text-decoration-none text-dark">
+                            <small class="fw-bold">プロが使うキーボード設定</small>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="text-decoration-none text-dark">
+                            <small class="fw-bold">快適なゲーム環境の作り方</small>
+                        </a>
+                    </li>
+                    <li class="mb-0">
+                        <a href="#" class="text-decoration-none text-dark">
+                            <small class="fw-bold">長時間プレイでも疲れないデバイス選び</small>
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold mb-3">
+                        <i class="bi bi-controller"></i> PlayEdge
+                    </h5>
+                    <p>快適なプレイ環境をサポートする情報サイト</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h6 class="fw-bold mb-3">サイト情報</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">About</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">利用規約</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">プライバシー</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h6 class="fw-bold mb-3">サポート</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">ヘルプ</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">お問い合わせ</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h6 class="fw-bold mb-3">フォローする</h6>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white fs-4"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="bi bi-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-light">
+            <p class="text-center mb-0">&copy; 2024 PlayEdge. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // アコーディオンの動作確認
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('飼い方ガイドページが読み込まれました');
+        });
+    </script>
+</body>
+
+</html>

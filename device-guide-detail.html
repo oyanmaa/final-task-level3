@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="img/contcont.png" type="image/svg+xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detail - PlayEdge</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        .carousel-item img {
+            height: 450px;
+            object-fit: cover;
+            border-radius: 30px;
+        }
+
+        .pet-header {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: -80px 0 30px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .accordion-button {
+            border-radius: 20px !important;
+            font-weight: bold;
+        }
+
+        .stat-badge {
+            background: #ffabab;
+            color: var(--primary-color);
+            padding: 15px 25px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .sidebar-card {
+            background: white;
+            border-radius: 25px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 20px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: var(--brown-color);
+            color: white;
+            padding: 40px 0;
+            margin-top: 80px;
+            border-radius: 50px 50px 0 0;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            filter: invert(100%);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ナビゲーションバー -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-controller"></i> PlayEdge
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="device-guide-list.html">Devices</a></li>
+                    <li class="nav-item"><a class="nav-link" href="device-guide.html">Guide</a></li>
+                    <li class="nav-item"><a class="nav-link" href="device-guide-qa.html">Support</a></li>
+                    <li class="nav-item"><a class="nav-link" href="device-guide-record.html">Records</a></li>
+                    <li class="nav-item ms-lg-4">
+                        <a class="nav-link btn-login-cool" href="login.html">
+                            <i class="bi bi-person"></i> LOGIN
+                        </a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="nav-link btn-post-cool" href="device-guide-form.html">
+                            POST
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container mt-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">ホーム</a></li>
+                <li class="breadcrumb-item"><a href="#">デバイスガイド</a></li>
+                <li class="breadcrumb-item"><a href="#">キーボード</a></li>
+                <li class="breadcrumb-item active">ROG Falchion RX Low</li>
+            </ol>
+        </nav>
+
+        <div id="petCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#petCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#petCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#petCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img/key1.webp" class="d-block w-50 mx-auto" alt="柴犬1">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/key3.webp" class="d-block w-50 mx-auto" alt="柴犬2">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/key5.webp" class="d-block w-50 mx-auto" alt="柴犬3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#petCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#petCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
+        <div class="pet-header">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <span class="badge"
+                        style="background: #ff4747; color: #ffffff; padding: 10px 20px; border-radius: 50px; font-size: 1rem;">ASUS
+                        ROG</span>
+                    <h3 class="fs-5 fw-bold mt-3 mb-3" style="color: var(--brown-color);"> ROG Falchion RX Low
+                        Profile(英語配列) ホワイト FALCHION/RX/OP/LP/RD/US [有線・ワイヤレス /Bluetooth・USB]</h3>
+                    <p class="lead text-muted">ROG Falchion RX Low Profile 65％ワイヤレス薄型ゲーミングキーボード、ROG RXロープロファイル
+                        オプティカルスイッチ、ROG SpeedNova ワイヤレス テクノロジーと Omni Receiver
+                        によるトライモード接続、保護カバー、一体型シリコン緩衝フォーム、インタラクティブなタッチパネル、macOS対応 </p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <button class="btn btn-success btn-lg rounded-pill mb-2 w-100 bg-danger"><i class="bi bi-heart"></i>
+                        欲しいものリスト</button>
+                    <button class="btn btn-outline-warning btn-lg rounded-pill w-100"><i class="bi bi-share"></i>
+                        シェア</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="info-card">
+                    <h3 class="fw-bold mb-4" style="color: var(--brown-color);"><i class="bi bi-info-circle-fill"></i>
+                        基本情報</h3>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-3">
+                            <div class="stat-badge text-white"><strong>値段</strong><br>31,880円</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-badge text-white"><strong>発売日</strong><br>2024/03/08</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-badge text-white"><strong>キー数</strong><br>68キー</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-badge text-white"><strong>本体重量</strong><br>595g</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion mb-4" id="petAccordion">
+                    <div class="accordion-item mb-3" style="border: none; border-radius: 20px;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#character">
+                                <i class="bi bi-check2-circle"></i> 特徴
+                            </button>
+                        </h2>
+                        <div id="character" class="accordion-collapse collapse show" data-bs-parent="#petAccordion">
+                            <div class="accordion-body">
+                                <h5 class="fw-bold mb-3">特徴</h5>
+                                <ul>
+                                    <li><strong>薄型デザイン:</strong>薄さ26.5mmの60％キーボードフレームに、65％キーボードレイアウトを採用。矢印キーとナビゲーションキーを巧みに組み込んでいます。
+                                    </li>
+                                    <li><strong>オプティカルスイッチ:</strong> 潤滑剤塗布済みのRX
+                                        Redスイッチはセントラルライティングの機能を備えており、ゼロに近いデバウンス遅延でブレのない安定したキーストロークを実現</li>
+                                    <li><strong>ライトモード接続:</strong>Bluetooth接続（最大3台まで同時接続可能）、ROG
+                                        SpeedNovaワイヤレステクノロジーによる2.4GHz接続、有線USB接続が可能</li>
+                                    <li><strong>ROG Omni Receiver:</strong>1台のレシーバで複数の対応デバイスにワイヤレス接続可能</li>
+                                    <li><strong>直感的なコントロール:</strong>多機能ボタンとインタラクティブなタッチパネルにより、メディアの再生／一時停止、音量調整、キーボード照明の調整が可能
+                                    </li>
+                                    <li><strong>タイピング体験の向上:</strong>2層のシリコンフォームを内蔵し、反響音やスイッチの操作音を抑えることで、タイピング時の静音性を向上
+                                    </li>
+                                    <li><strong>保護カバー:</strong>移動中の保護、防塵を実現</li>
+                                    <li><strong>macOS対応:</strong>WindowsモードとMacOSモードを簡単に切り替え</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item mb-3" style="border: none; border-radius: 20px;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#care">
+                                <i class="bi bi-check2-square"></i> 製品スペック
+                            </button>
+                        </h2>
+                        <div id="care" class="accordion-collapse collapse" data-bs-parent="#petAccordion">
+                            <div class="accordion-body">
+                                <div class="spec-card">
+                                    <h3 class="fw-bold mb-3">製品スペック</h3>
+
+                                    <ul class="list-group mb-4">
+                                        <li class="list-group-item">● サイズ (Full/TKL)：96%</li>
+                                        <li class="list-group-item">● インターフェイス：USB 2.0 (Type‑C to Type‑A)、Bluetooth
+                                            5.1、RF 2.4GHz</li>
+                                        <li class="list-group-item">● ライティング：RGB Per Keys</li>
+                                        <li class="list-group-item">● Aura Sync：Yes</li>
+                                        <li class="list-group-item">● アンチゴースティング：N Key Rollover</li>
+                                        <li class="list-group-item">● マクロキー：All Keys Programmable</li>
+                                        <li class="list-group-item">● USBレポートレート：(有線) 1000 Hz</li>
+                                        <li class="list-group-item">● ケーブル：2M USB Type‑A to C braided cable</li>
+                                        <li class="list-group-item">● OS：Windows 11</li>
+                                        <li class="list-group-item">● ソフトウェア：Armoury Crate</li>
+                                        <li class="list-group-item">● 寸法：37.7 × 13.1 × 4.0 cm</li>
+                                        <li class="list-group-item">● 質量：1012g（ケーブル除く）</li>
+                                    </ul>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item mb-3" style="border: none; border-radius: 20px;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#health">
+                                <i class="bi bi-view-list"></i> 内容物
+                            </button>
+                        </h2>
+                        <div id="health" class="accordion-collapse collapse" data-bs-parent="#petAccordion">
+                            <div class="accordion-body">
+                                <h4 class="fw-bold mb-2">内容物</h4>
+                                <ul class="list-group">
+                                    <li class="list-group-item">・ROG Strix Scope II 96 Wireless 本体</li>
+                                    <li class="list-group-item">・リストレスト</li>
+                                    <li class="list-group-item">・2-in-1 ROG キーキャップ & スイッチプラー</li>
+                                    <li class="list-group-item">・ワイヤレスレシーバー</li>
+                                    <li class="list-group-item">・USBエクステンダー</li>
+                                    <li class="list-group-item">・ROG-themed スペースバーキーキャップ</li>
+                                    <li class="list-group-item">・USBケーブル</li>
+                                    <li class="list-group-item">・ROGステッカー</li>
+                                    <li class="list-group-item">・クイックスタートガイド</li>
+                                    <li class="list-group-item">・保証書</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" style="border: none; border-radius: 20px;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#training">
+                                <i class="bi bi-info-circle"></i> 注意点
+                            </button>
+                        </h2>
+                        <div id="training" class="accordion-collapse collapse" data-bs-parent="#petAccordion">
+                            <div class="accordion-body">
+                                <h5 class="fw-bold mb-3 mt-4">ゲーミングキーボードを長く使うための最重要ポイントは、以下の3点です。</h5>
+                                <ul>
+                                    <li>液体・食べカス厳禁 ジュースなどの液体は故障の最大の原因です。お菓子などのカスも動作不良を招きます。</li>
+
+                                    <li>掃除は慎重に キーキャップを外すときは必ず「専用工具」を使いましょう。また、アルコール除菌はプラスチックを溶かす恐れがあるため、ノンアルコールが無難です。
+                                    </li>
+
+                                    <li>叩かない・ケーブルを曲げない 衝撃を与えたり（台パン）、ケーブルを根元から強く曲げたりすると、内部断線や接触不良が起きます。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="sidebar-card">
+                    <h5 class="fw-bold mb-4" style="color: var(--brown-color);"><i
+                            class="bi bi-star-fill text-warning"></i> 使いやすさ評価</h5>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-2"><span>初心者向け</span><strong>★★★★☆</strong></div>
+                        <div class="progress" style="height: 10px; border-radius: 10px;">
+                            <div class="progress-bar" style="width: 80%; background: var(--primary-color);"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-2"><span>お手入れのしやすさ</span><strong>★★★☆☆</strong>
+                        </div>
+                        <div class="progress" style="height: 10px; border-radius: 10px;">
+                            <div class="progress-bar" style="width: 60%; background: var(--secondary-color);"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-2"><span>打鍵間</span><strong>★★★☆☆</strong></div>
+                        <div class="progress" style="height: 10px; border-radius: 10px;">
+                            <div class="progress-bar" style="width: 60%; background: var(--primary-color);"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-2"><span>カスタマイズ性</span><strong>★★★★☆</strong>
+                        </div>
+                        <div class="progress" style="height: 10px; border-radius: 10px;">
+                            <div class="progress-bar" style="width: 80%; background: var(--secondary-color);"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h5 class="fw-bold mb-4" style="color: var(--brown-color);"><i class="bi bi-cash-coin"></i> 使用費用の目安
+                    </h5>
+                    <div class="mb-2 d-flex justify-content-between"><span>初期費用</span><strong>¥15,000〜¥30,000</strong>
+                    </div>
+                    <div class="mb-2 d-flex justify-content-between">
+                        <span>カスタマイズ費用</span><strong>¥5,000〜¥10,000</strong>
+                    </div>
+                    <div class="mb-2 d-flex justify-content-between"><span>修理費</span><strong>¥5,000〜¥10,000</strong>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h5 class="fw-bold mb-3" style="color: var(--brown-color);"><i class="bi bi-tags"></i> タグ</h5>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge bg-success">#キーボード</span>
+                        <span class="badge bg-warning text-dark">#ASUS</span>
+                        <span class="badge bg-info">#ROG</span>
+                        <span class="badge bg-danger">#メカニカルキーボード</span>
+                        <span class="badge bg-primary">#最新商品</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold mb-3">
+                        <i class="bi bi-controller"></i> PlayEdge
+                    </h5>
+                    <p>快適なプレイ環境をサポートする情報サイト</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h6 class="fw-bold mb-3">サイト情報</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">About</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">利用規約</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">プライバシー</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h6 class="fw-bold mb-3">サポート</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">ヘルプ</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">お問い合わせ</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h6 class="fw-bold mb-3">フォローする</h6>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white fs-4"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="bi bi-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-light">
+            <p class="text-center mb-0">&copy; 2024 PlayEdge. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

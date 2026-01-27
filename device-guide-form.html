@@ -3,47 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="img/contcont.png" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetLife - 飼育記録を投稿</title>
+    <title>from - PlayEdge</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
-        :root {
-            --primary-color: #10b981;
-            --secondary-color: #f59e0b;
-            --accent-color: #fb923c;
-            --brown-color: #78350f;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #fef3c7;
-        }
-
-        .navbar {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-brand {
-            font-weight: bold;
-            color: var(--primary-color) !important;
-            font-size: 1.5rem;
-        }
-
-        .nav-link {
-            color: var(--brown-color) !important;
-            font-weight: 500;
-            margin: 0 10px;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: var(--primary-color) !important;
-        }
-
         .page-header {
-            background: linear-gradient(135deg, #dcfce7 0%, #fed7aa 100%);
+            background: linear-gradient(135deg, #dcf0fc 0%, #bfaafe 100%);
             padding: 60px 0;
             border-radius: 0 0 50px 50px;
             margin-bottom: 40px;
@@ -158,7 +126,7 @@
 
         .category-option input[type="radio"]:checked+.category-label {
             border-color: var(--primary-color);
-            background: linear-gradient(135deg, #dcfce7, #fed7aa);
+            background: linear-gradient(135deg, #e1dcfc, #d8b9fe);
             font-weight: 700;
         }
 
@@ -301,7 +269,7 @@
         }
 
         .info-card {
-            background: linear-gradient(135deg, #dcfce7, #fed7aa);
+            background: linear-gradient(135deg, #c9ddf7, #e9feff);
             border-radius: 20px;
             padding: 25px;
             margin-bottom: 30px;
@@ -455,46 +423,44 @@
     <!-- ナビゲーションバー -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="bi bi-heart-fill text-danger"></i> PetLife
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-controller"></i> PlayEdge
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">ホーム</a>
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="device-guide-list.html">Devices</a></li>
+                    <li class="nav-item"><a class="nav-link" href="device-guide.html">Guide</a></li>
+                    <li class="nav-item"><a class="nav-link" href="device-guide-qa.html">Support</a></li>
+                    <li class="nav-item"><a class="nav-link" href="device-guide-record.html">Records</a></li>
+                    <li class="nav-item ms-lg-4">
+                        <a class="nav-link btn-login-cool" href="login.html">
+                            <i class="bi bi-person"></i> LOGIN
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">ペット図鑑</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">飼い方ガイド</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Q&A</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">飼育記録</a>
+                    <li class="nav-item ms-lg-2">
+                        <a class="nav-link btn-post-cool" href="device-guide-form.html">
+                            POST
+                        </a>
                     </li>
                 </ul>
-                <button class="btn btn-outline-success ms-3 rounded-pill fw-bold">
-                    <i class="bi bi-person-circle"></i> ログイン
-                </button>
             </div>
         </div>
     </nav>
+
 
     <!-- ページヘッダー -->
     <div class="page-header">
         <div class="container">
             <div class="text-center">
                 <h1 class="display-4 fw-bold mb-3" style="color: var(--brown-color);">
-                    <i class="bi bi-pencil-square"></i> 飼育記録を投稿
+                    <i class="bi bi-pencil-square"></i> デバイスの情報を投稿
                 </h1>
                 <p class="lead" style="color: var(--brown-color);">
-                    今日のペットの様子を記録しましょう
+                    おすすめのデバイスの情報を登録しましょう！
                 </p>
             </div>
         </div>
@@ -514,12 +480,12 @@
                             </h3>
 
                             <div class="mb-4">
-                                <label class="form-label">ペットを選択<span class="required-mark">*</span></label>
+                                <label class="form-label">デバイスの選択<span class="required-mark">*</span></label>
                                 <select class="form-select" required>
                                     <option value="">選択してください</option>
-                                    <option value="moca" selected>モカ（柴犬・♀）</option>
-                                    <option value="maru">マル（アメリカンショートヘア・♂）</option>
-                                    <option value="hana">ハナ（ミニチュアダックス・♀）</option>
+                                    <option value="moca" selected>DeathAdder V3 Pro（マウス・Razer）</option>
+                                    <option value="maru">Huntsman V3 Pro（キーボード・Razer）</option>
+                                    <option value="hana">ROG Azoth Extreme（キーボード・Asus）</option>
                                 </select>
                             </div>
 
@@ -542,36 +508,36 @@
                                     <div class="category-option">
                                         <input type="radio" name="category" id="cat-checkup" value="checkup" required>
                                         <label for="cat-checkup" class="category-label">
-                                            <i class="bi bi-hospital" style="color: #3b82f6;"></i>
-                                            <span>健康診断</span>
+                                            <i class="bi bi-boxes"></i>
+                                            <span>カスタマイズ</span>
                                         </label>
                                     </div>
                                     <div class="category-option">
                                         <input type="radio" name="category" id="cat-vaccine" value="vaccine">
                                         <label for="cat-vaccine" class="category-label">
-                                            <i class="bi bi-shield-check" style="color: #f59e0b;"></i>
-                                            <span>ワクチン</span>
+                                            <i class="bi bi-hammer"></i>
+                                            <span>修理</span>
                                         </label>
                                     </div>
                                     <div class="category-option">
                                         <input type="radio" name="category" id="cat-weight" value="weight">
                                         <label for="cat-weight" class="category-label">
-                                            <i class="bi bi-speedometer2" style="color: #10b981;"></i>
-                                            <span>体重測定</span>
+                                            <i class="bi bi-exclamation-octagon"></i>
+                                            <span>不具合</span>
                                         </label>
                                     </div>
                                     <div class="category-option">
                                         <input type="radio" name="category" id="cat-medication" value="medication">
                                         <label for="cat-medication" class="category-label">
-                                            <i class="bi bi-capsule" style="color: #ec4899;"></i>
-                                            <span>投薬</span>
+                                            <i class="bi bi-cash-coin"></i>
+                                            <span>売却</span>
                                         </label>
                                     </div>
                                     <div class="category-option">
                                         <input type="radio" name="category" id="cat-daily" value="daily">
                                         <label for="cat-daily" class="category-label">
-                                            <i class="bi bi-sun" style="color: #fb923c;"></i>
-                                            <span>日常記録</span>
+                                            <i class="bi bi-pass"></i>
+                                            <span>メンテナンス</span>
                                         </label>
                                     </div>
                                     <div class="category-option">
@@ -594,7 +560,7 @@
 
                             <div class="mb-4">
                                 <label class="form-label">タイトル<span class="required-mark">*</span></label>
-                                <input type="text" class="form-control" placeholder="例：定期健康診断、朝の散歩" required>
+                                <input type="text" class="form-control" placeholder="例：キーボードの掃除" required>
                                 <div class="help-text">
                                     <i class="bi bi-lightbulb"></i> 簡潔でわかりやすいタイトルをつけましょう
                                 </div>
@@ -602,24 +568,24 @@
 
                             <div class="mb-4">
                                 <label class="form-label">詳細内容<span class="required-mark">*</span></label>
-                                <textarea class="form-control" placeholder="今日のペットの様子や気づいたことを記録してください..."
+                                <textarea class="form-control" placeholder="今日のデバイスの様子や気づいたことを記録してください..."
                                     required></textarea>
                                 <div class="help-text">
-                                    <i class="bi bi-chat-quote"></i> 健康状態、行動、食事、気づいたことなどを詳しく記録しましょう
+                                    <i class="bi bi-chat-quote"></i> 不具合がないか、パフォーマンスはよいか、細かく確認しましょう！
                                 </div>
                             </div>
 
                             <div class="mb-4">
-                                <label class="form-label">ペットの気分</label>
+                                <label class="form-label">デバイスの調子</label>
                                 <div class="mood-selector">
-                                    <span class="mood-option" data-mood="very-happy" title="とても元気">😄</span>
-                                    <span class="mood-option" data-mood="happy" title="元気">😊</span>
-                                    <span class="mood-option active" data-mood="normal" title="普通">😐</span>
-                                    <span class="mood-option" data-mood="tired" title="疲れ気味">😔</span>
-                                    <span class="mood-option" data-mood="sick" title="体調不良">😷</span>
+                                    <span class="mood-option" data-mood="very-happy" title="絶好調">◎</span>
+                                    <span class="mood-option" data-mood="happy" title="良好">〇</span>
+                                    <span class="mood-option active" data-mood="normal" title="普通">−</span>
+                                    <span class="mood-option" data-mood="tired" title="少し不調">！</span>
+                                    <span class="mood-option" data-mood="sick" title="修理必須">×</span>
                                 </div>
                                 <div class="help-text text-center mt-2">
-                                    クリックしてペットの気分を選択
+                                    クリックしてデバイスの調子を選択
                                 </div>
                             </div>
                         </div>
@@ -633,31 +599,30 @@
 
                             <div class="row">
                                 <div class="col-md-6 mb-4">
-                                    <label class="form-label">体重</label>
+                                    <label class="form-label">打鍵数</label>
                                     <div class="input-group">
-                                        <input type="number" class="form-control" placeholder="8.5" step="0.1">
-                                        <span class="input-group-text">kg</span>
+                                        <input type="number" class="form-control" placeholder="4235" step="0.1">
+                                        <span class="input-group-text">回</span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-4">
-                                    <label class="form-label">体温</label>
+                                    <label class="form-label">クリック数</label>
                                     <div class="input-group">
-                                        <input type="number" class="form-control" placeholder="38.5" step="0.1">
-                                        <span class="input-group-text">℃</span>
+                                        <input type="number" class="form-control" placeholder="1204" step="0.1">
+                                        <span class="input-group-text">回</span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-4">
-                                    <label class="form-label">水分摂取量</label>
+                                    <label class="form-label">使用時間</label>
                                     <div class="input-group">
-                                        <input type="number" class="form-control" placeholder="750">
-                                        <span class="input-group-text">ml</span>
+                                        <input type="number" class="form-control" placeholder="3">
+                                        <span class="input-group-text">時間</span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-4">
-                                    <label class="form-label">運動量（歩数）</label>
+                                    <label class="form-label">プレイしたゲーム</label>
                                     <div class="input-group">
-                                        <input type="number" class="form-control" placeholder="8500">
-                                        <span class="input-group-text">歩</span>
+                                        <input type="number" class="form-control" placeholder="Valorant">
                                     </div>
                                 </div>
                             </div>
@@ -703,12 +668,12 @@
                             <div>
                                 <label class="form-label">おすすめタグ</label>
                                 <div class="suggested-tags">
-                                    <span class="suggested-tag" onclick="addTag('散歩')">#散歩</span>
-                                    <span class="suggested-tag" onclick="addTag('食事')">#食事</span>
-                                    <span class="suggested-tag" onclick="addTag('遊び')">#遊び</span>
-                                    <span class="suggested-tag" onclick="addTag('しつけ')">#しつけ</span>
-                                    <span class="suggested-tag" onclick="addTag('健康')">#健康</span>
-                                    <span class="suggested-tag" onclick="addTag('成長')">#成長</span>
+                                    <span class="suggested-tag" onclick="addTag('キーボード')">#キーボード</span>
+                                    <span class="suggested-tag" onclick="addTag('マウス')">#マウス</span>
+                                    <span class="suggested-tag" onclick="addTag('モニター')">#モニター</span>
+                                    <span class="suggested-tag" onclick="addTag('Razer')">#Razer</span>
+                                    <span class="suggested-tag" onclick="addTag('ROG')">#ROG</span>
+                                    <span class="suggested-tag" onclick="addTag('Apex')">#Apex</span>
                                 </div>
                             </div>
                         </div>
@@ -735,10 +700,10 @@
                         <i class="bi bi-lightbulb-fill"></i> 記録のポイント
                     </h5>
                     <ul>
-                        <li>毎日の健康状態を記録することで、変化に気づきやすくなります</li>
-                        <li>写真を添付すると、成長の記録が見返しやすくなります</li>
+                        <li>毎日の状態を記録することで、変化に気づきやすくなります</li>
+                        <li>写真を添付すると、デバイスの記録が見返しやすくなります</li>
                         <li>気になることは小さなことでもメモしておきましょう</li>
-                        <li>定期的な体重測定は健康管理に重要です</li>
+                        <li>定期的なメンテナンスはデバイスの寿命に関わります</li>
                     </ul>
                 </div>
 
@@ -772,16 +737,16 @@
                     <div class="small">
                         <div class="d-flex justify-content-between mb-2 pb-2"
                             style="border-bottom: 1px solid rgba(0,0,0,0.1);">
-                            <span>体重測定</span>
+                            <span>打鍵数</span>
                             <span class="text-muted">11/18</span>
                         </div>
                         <div class="d-flex justify-content-between mb-2 pb-2"
                             style="border-bottom: 1px solid rgba(0,0,0,0.1);">
-                            <span>定期健診</span>
+                            <span>メンテナンス</span>
                             <span class="text-muted">11/10</span>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <span>投薬</span>
+                            <span>修理</span>
                             <span class="text-muted">11/05</span>
                         </div>
                     </div>
@@ -832,9 +797,9 @@
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <h5 class="fw-bold mb-3">
-                        <i class="bi bi-heart-fill text-danger"></i> PetLife
+                        <i class="bi bi-controller"></i> PlayEdge
                     </h5>
-                    <p>ペットとの幸せな暮らしを応援する情報サイト</p>
+                    <p>快適なプレイ環境をサポートする情報サイト</p>
                 </div>
                 <div class="col-md-2 mb-4">
                     <h6 class="fw-bold mb-3">サイト情報</h6>
@@ -863,7 +828,7 @@
                 </div>
             </div>
             <hr class="border-light">
-            <p class="text-center mb-0">&copy; 2024 PetLife. All rights reserved.</p>
+            <p class="text-center mb-0">&copy; 2024 PlayEdge. All rights reserved.</p>
         </div>
     </footer>
 

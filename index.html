@@ -1,79 +1,56 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="img/contcont.png" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetLife - ペット情報・飼い方ガイド</title>
+    <title>home - PlayEdge</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
     <style>
-        :root {
-            --primary-color: #10b981;
-            --secondary-color: #f59e0b;
-            --accent-color: #fb923c;
-            --brown-color: #78350f;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #fef3c7;
-        }
-        
-        .navbar {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .navbar-brand {
-            font-weight: bold;
-            color: var(--primary-color) !important;
-            font-size: 1.5rem;
-        }
-        
-        .nav-link {
-            color: var(--brown-color) !important;
-            font-weight: 500;
-            margin: 0 10px;
-        }
-        
-        .nav-link:hover {
-            color: var(--primary-color) !important;
-        }
-        
         .hero-section {
-            background: linear-gradient(135deg, #dcfce7 0%, #fed7aa 100%);
+            background: linear-gradient(135deg, #dfdfe1 0%, #dddee0 100%);
             padding: 80px 0;
             border-radius: 0 0 50px 50px;
             margin-bottom: 50px;
         }
-        
+
         .hero-image {
             width: 100%;
             max-width: 500px;
             animation: float 3s ease-in-out infinite;
         }
-        
+
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
         }
-        
+
         .pet-card {
             background: white;
             border-radius: 30px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(90, 90, 90, 0.815);
             transition: all 0.3s ease;
             height: 100%;
             border: 3px solid transparent;
         }
-        
+
         .pet-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 40px rgba(63, 63, 63, 0.678);
             border-color: var(--primary-color);
         }
-        
+
         .pet-icon {
             width: 100px;
             height: 100px;
@@ -86,7 +63,7 @@
             margin: 0 auto 20px;
             color: white;
         }
-        
+
         .category-badge {
             background: var(--secondary-color);
             color: white;
@@ -96,16 +73,16 @@
             display: inline-block;
             margin-bottom: 15px;
         }
-        
+
         .feature-card {
             background: white;
             border-radius: 25px;
             padding: 40px;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgb(95, 95, 95);
             height: 100%;
         }
-        
+
         .feature-icon {
             width: 80px;
             height: 80px;
@@ -118,7 +95,7 @@
             color: var(--primary-color);
             margin: 0 auto 20px;
         }
-        
+
         .btn-primary-custom {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border: none;
@@ -129,18 +106,19 @@
             font-size: 1.1rem;
             transition: all 0.3s ease;
         }
-        
+
         .btn-primary-custom:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 10px 25px #959aae;
+            color: #959aae;
         }
-        
+
         .section-title {
             position: relative;
             display: inline-block;
             margin-bottom: 40px;
         }
-        
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -151,7 +129,7 @@
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             border-radius: 2px;
         }
-        
+
         footer {
             background-color: var(--brown-color);
             color: white;
@@ -159,53 +137,61 @@
             margin-top: 80px;
             border-radius: 50px 50px 0 0;
         }
-        
+
         .stats-box {
             background: white;
             border-radius: 20px;
             padding: 30px;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(80, 80, 80, 0.655);
         }
-        
+
         .stats-number {
             font-size: 2.5rem;
             font-weight: bold;
             color: var(--primary-color);
         }
+
+        .btn-outline-gray {
+            color: #5e5e5e;
+            border: 2px solid #5e5e5e;
+        }
+
+        .btn-outline-gray:hover {
+            background-color: #5e5e5e;
+            color: white;
+        }
     </style>
 </head>
+
 <body>
     <!-- ナビゲーションバー -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="bi bi-heart-fill text-danger"></i> PetLife
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-controller"></i> PlayEdge
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">ホーム</a>
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="device-guide-list.html">Devices</a></li>
+                    <li class="nav-item"><a class="nav-link" href="device-guide.html">Guide</a></li>
+                    <li class="nav-item"><a class="nav-link" href="device-guide-qa.html">Support</a></li>
+                    <li class="nav-item"><a class="nav-link" href="device-guide-record.html">Records</a></li>
+                    <li class="nav-item ms-lg-4">
+                        <a class="nav-link btn-login-cool" href="login.html">
+                            <i class="bi bi-person"></i> LOGIN
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">ペット図鑑</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">飼い方ガイド</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Q&A</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">飼育記録</a>
+                    <li class="nav-item ms-lg-2">
+                        <a class="nav-link btn-post-cool" href="device-guide-form.html">
+                            POST
+                        </a>
                     </li>
                 </ul>
-                <button class="btn btn-outline-success ms-3 rounded-pill fw-bold">
-                    <i class="bi bi-person-circle"></i> ログイン
-                </button>
             </div>
         </div>
     </nav>
@@ -215,25 +201,25 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h1 class="display-3 fw-bold mb-4" style="color: var(--brown-color);">
+                    <h1 class="display-4 fw-bold mb-4" style="color: rgb(107, 107, 107);">
                         あなたにぴったりの<br>
-                        ペットを見つけよう
+                        デバイスを探そう！
                     </h1>
-                    <p class="lead mb-4" style="color: #78350f;">
-                        ペットとの幸せな暮らしをサポートする情報サイト。<br>
-                        飼い方、健康管理、しつけまで詳しく解説！
+                    <p class="lead mb-4" style="color: #616161;">
+                        ゲーミングデバイスの選び方をサポートする情報サイト。<br>
+                        使い方、組み合わせ、おすすめデバイスをすべて紹介！
                     </p>
                     <div class="d-flex gap-3">
                         <button class="btn btn-primary-custom">
-                            <i class="bi bi-search"></i> ペットを探す
+                            <i class="bi bi-search"></i> デバイスを探す
                         </button>
-                        <button class="btn btn-outline-dark rounded-pill px-4 py-3 fw-bold">
-                            <i class="bi bi-book"></i> 飼い方を学ぶ
+                        <button class="btn btn-outline-gray rounded-pill px-4 py-3 fw-bold">
+                            <i class="bi bi-book"></i> ゲーミングデバイスとは？
                         </button>
                     </div>
                 </div>
                 <div class="col-lg-6 text-center">
-                    <img src="https://placehold.co/500x400/10b981/ffffff?text=Happy+Pets" class="hero-image" alt="ペットイラスト">
+                    <img src="img/AdobeStock_440045174-1300x900-1.jpeg" class="hero-image" alt="キーボードとか">
                 </div>
             </div>
         </div>
@@ -244,25 +230,25 @@
         <div class="row g-4 mb-5">
             <div class="col-md-3">
                 <div class="stats-box">
-                    <div class="stats-number">500+</div>
-                    <p class="text-muted mb-0">掲載ペット種類</p>
+                    <div class="stats-number">600+</div>
+                    <p class="text-muted mb-0">掲載デバイス種類</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="stats-box">
-                    <div class="stats-number">10,000+</div>
-                    <p class="text-muted mb-0">飼育記録</p>
+                    <div class="stats-number"><i class="bi bi-star-fill text-warning"></i>4.4</div>
+                    <p class="text-muted mb-0">ユーザー満足度</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="stats-box">
-                    <div class="stats-number">3,000+</div>
+                    <div class="stats-number">8,000+</div>
                     <p class="text-muted mb-0">Q&A投稿</p>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="stats-box">
-                    <div class="stats-number">50,000+</div>
+                    <div class="stats-number">100,000+</div>
                     <p class="text-muted mb-0">ユーザー数</p>
                 </div>
             </div>
@@ -270,188 +256,117 @@
 
         <!-- 人気のペット -->
         <section class="mb-5">
-            <h2 class="text-center fw-bold section-title" style="color: var(--brown-color);">
-                <i class="bi bi-star-fill text-warning"></i> 人気のペット
+            <h2 class="text-center fw-bold section-title mb-2" style="color: var(--accent-color); letter-spacing: 2px;">
+                <i class="bi bi-controller"></i> GAMING DEVICE
             </h2>
-            <p class="text-center text-muted mb-5">多くの方に選ばれているペットたち</p>
+            <p class="text-center text-muted mb-5 small text-uppercase">Find your best gear</p>
 
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="pet-card">
-                        <div class="pet-icon">
-                            <i class="bi bi-emoji-smile"></i>
+            <div class="row row-cols-2 row-cols-md-3 g-4">
+
+                <div class="col">
+                    <div class="card h-100 border-0 bg-transparent text-center product-unit">
+                        <div class="mb-3"
+                            style="aspect-ratio: 1/1; background: #f8f9fa; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                            <img src="img/huntsman_v3_white_features01.webp" class="img-fluid p-3"
+                                style="max-height: 100%; object-fit: contain;">
                         </div>
-                        <div class="text-center">
-                            <span class="category-badge">犬</span>
-                            <h4 class="fw-bold mb-3">柴犬</h4>
-                            <p class="text-muted mb-4">
-                                日本原産の愛らしい犬種。忠実で賢く、家族思いの性格が魅力です。
-                            </p>
-                            <div class="d-flex justify-content-around mb-3">
-                                <div>
-                                    <small class="text-muted d-block">飼いやすさ</small>
-                                    <div class="text-warning">★★★★☆</div>
-                                </div>
-                                <div>
-                                    <small class="text-muted d-block">人気度</small>
-                                    <div class="text-warning">★★★★★</div>
-                                </div>
-                            </div>
-                            <button class="btn btn-outline-success rounded-pill w-100">
-                                詳細を見る <i class="bi bi-arrow-right"></i>
-                            </button>
+                        <div class="card-body p-0">
+                            <h5 class="fw-bold mb-1" style="font-size: 1.1rem;">キーボード</h5>
+                            <p class="text-muted small mb-2 d-none d-md-block">快適操作と華やかなプレイ環境を実現</p>
+                            <p class="fw-bold mb-3" style="color: #444;">￥5,000 〜</p>
+                            <a href="#" class="btn btn-dark btn-sm rounded-0 px-4 stretched-link">DETAILS</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="pet-card">
-                        <div class="pet-icon" style="background: linear-gradient(135deg, #f59e0b, #fb923c);">
-                            <i class="bi bi-emoji-heart-eyes"></i>
+                <div class="col">
+                    <div class="card h-100 border-0 bg-transparent text-center product-unit">
+                        <div class="mb-3"
+                            style="aspect-ratio: 1/1; background: #f8f9fa; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                            <img src="img/41v7IJm5HfL._SL500_.jpg" class="img-fluid p-3"
+                                style="max-height: 100%; object-fit: contain;">
                         </div>
-                        <div class="text-center">
-                            <span class="category-badge" style="background: #fb923c;">猫</span>
-                            <h4 class="fw-bold mb-3">アメリカンショートヘア</h4>
-                            <p class="text-muted mb-4">
-                                人懐っこく遊び好きな性格。初心者にもおすすめの猫種です。
-                            </p>
-                            <div class="d-flex justify-content-around mb-3">
-                                <div>
-                                    <small class="text-muted d-block">飼いやすさ</small>
-                                    <div class="text-warning">★★★★★</div>
-                                </div>
-                                <div>
-                                    <small class="text-muted d-block">人気度</small>
-                                    <div class="text-warning">★★★★★</div>
-                                </div>
-                            </div>
-                            <button class="btn btn-outline-warning rounded-pill w-100">
-                                詳細を見る <i class="bi bi-arrow-right"></i>
-                            </button>
+                        <div class="card-body p-0">
+                            <h5 class="fw-bold mb-1" style="font-size: 1.1rem;">マウス</h5>
+                            <p class="text-muted small mb-2 d-none d-md-block">高精度センサーで勝利をサポート</p>
+                            <p class="fw-bold mb-3" style="color: #444;">￥3,000 〜</p>
+                            <a href="#" class="btn btn-dark btn-sm rounded-0 px-4 stretched-link">DETAILS</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="pet-card">
-                        <div class="pet-icon" style="background: linear-gradient(135deg, #06b6d4, #3b82f6);">
-                            <i class="bi bi-droplet-fill"></i>
+                <div class="col">
+                    <div class="card h-100 border-0 bg-transparent text-center product-unit">
+                        <div class="mb-3"
+                            style="aspect-ratio: 1/1; background: #f8f9fa; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                            <img src="img/cont.jpg" class="img-fluid p-3"
+                                style="max-height: 100%; object-fit: contain;">
                         </div>
-                        <div class="text-center">
-                            <span class="category-badge" style="background: #06b6d4;">小動物</span>
-                            <h4 class="fw-bold mb-3">ハムスター</h4>
-                            <p class="text-muted mb-4">
-                                小さくて可愛らしいペット。省スペースで飼育できるのが魅力。
-                            </p>
-                            <div class="d-flex justify-content-around mb-3">
-                                <div>
-                                    <small class="text-muted d-block">飼いやすさ</small>
-                                    <div class="text-warning">★★★★★</div>
-                                </div>
-                                <div>
-                                    <small class="text-muted d-block">人気度</small>
-                                    <div class="text-warning">★★★★☆</div>
-                                </div>
-                            </div>
-                            <button class="btn btn-outline-info rounded-pill w-100">
-                                詳細を見る <i class="bi bi-arrow-right"></i>
-                            </button>
+                        <div class="card-body p-0">
+                            <h5 class="fw-bold mb-1" style="font-size: 1.1rem;">コントローラー</h5>
+                            <p class="text-muted small mb-2 d-none d-md-block">精密操作と快適なグリップ</p>
+                            <p class="fw-bold mb-3" style="color: #444;">￥4,000 〜</p>
+                            <a href="#" class="btn btn-dark btn-sm rounded-0 px-4 stretched-link">DETAILS</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="pet-card">
-                        <div class="pet-icon" style="background: linear-gradient(135deg, #8b5cf6, #ec4899);">
-                            <i class="bi bi-feather"></i>
+                <div class="col">
+                    <div class="card h-100 border-0 bg-transparent text-center product-unit">
+                        <div class="mb-3"
+                            style="aspect-ratio: 1/1; background: #f8f9fa; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                            <img src="img/head.jpg" class="img-fluid p-3"
+                                style="max-height: 100%; object-fit: contain;">
                         </div>
-                        <div class="text-center">
-                            <span class="category-badge" style="background: #8b5cf6;">鳥類</span>
-                            <h4 class="fw-bold mb-3">セキセイインコ</h4>
-                            <p class="text-muted mb-4">
-                                おしゃべり好きで人懐っこい小鳥。カラフルな羽が美しい。
-                            </p>
-                            <div class="d-flex justify-content-around mb-3">
-                                <div>
-                                    <small class="text-muted d-block">飼いやすさ</small>
-                                    <div class="text-warning">★★★★☆</div>
-                                </div>
-                                <div>
-                                    <small class="text-muted d-block">人気度</small>
-                                    <div class="text-warning">★★★★☆</div>
-                                </div>
-                            </div>
-                            <button class="btn rounded-pill w-100" style="border: 2px solid #8b5cf6; color: #8b5cf6;">
-                                詳細を見る <i class="bi bi-arrow-right"></i>
-                            </button>
+                        <div class="card-body p-0">
+                            <h5 class="fw-bold mb-1" style="font-size: 1.1rem;">オーディオ</h5>
+                            <p class="text-muted small mb-2 d-none d-md-block">高音質で没入感のある音楽体験</p>
+                            <p class="fw-bold mb-3" style="color: #444;">￥3,500 〜</p>
+                            <a href="#" class="btn btn-dark btn-sm rounded-0 px-4 stretched-link">DETAILS</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="pet-card">
-                        <div class="pet-icon" style="background: linear-gradient(135deg, #14b8a6, #10b981);">
-                            <i class="bi bi-water"></i>
+                <div class="col">
+                    <div class="card h-100 border-0 bg-transparent text-center product-unit">
+                        <div class="mb-3"
+                            style="aspect-ratio: 1/1; background: #f8f9fa; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                            <img src="img/mini.jpg" class="img-fluid p-3"
+                                style="max-height: 100%; object-fit: contain;">
                         </div>
-                        <div class="text-center">
-                            <span class="category-badge" style="background: #14b8a6;">爬虫類</span>
-                            <h4 class="fw-bold mb-3">ヒョウモントカゲモドキ</h4>
-                            <p class="text-muted mb-4">
-                                飼育しやすい爬虫類として人気。穏やかな性格で可愛らしい。
-                            </p>
-                            <div class="d-flex justify-content-around mb-3">
-                                <div>
-                                    <small class="text-muted d-block">飼いやすさ</small>
-                                    <div class="text-warning">★★★★☆</div>
-                                </div>
-                                <div>
-                                    <small class="text-muted d-block">人気度</small>
-                                    <div class="text-warning">★★★☆☆</div>
-                                </div>
-                            </div>
-                            <button class="btn rounded-pill w-100" style="border: 2px solid #14b8a6; color: #14b8a6;">
-                                詳細を見る <i class="bi bi-arrow-right"></i>
-                            </button>
+                        <div class="card-body p-0">
+                            <h5 class="fw-bold mb-1" style="font-size: 1.1rem;">モニター</h5>
+                            <p class="text-muted small mb-2 d-none d-md-block">高解像度と高速応答の映像体験</p>
+                            <p class="fw-bold mb-3" style="color: #444;">￥10,000 〜</p>
+                            <a href="#" class="btn btn-dark btn-sm rounded-0 px-4 stretched-link">DETAILS</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="pet-card">
-                        <div class="pet-icon" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);">
-                            <i class="bi bi-diagram-3-fill"></i>
+                <div class="col">
+                    <div class="card h-100 border-0 bg-transparent text-center product-unit">
+                        <div class="mb-3"
+                            style="aspect-ratio: 1/1; background: #f8f9fa; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                            <img src="img/vr2.jpg" class="img-fluid p-3" style="max-height: 100%; object-fit: contain;">
                         </div>
-                        <div class="text-center">
-                            <span class="category-badge" style="background: #3b82f6;">魚類</span>
-                            <h4 class="fw-bold mb-3">金魚</h4>
-                            <p class="text-muted mb-4">
-                                日本の伝統的な観賞魚。優雅な泳ぎと美しい姿が魅力的。
-                            </p>
-                            <div class="d-flex justify-content-around mb-3">
-                                <div>
-                                    <small class="text-muted d-block">飼いやすさ</small>
-                                    <div class="text-warning">★★★★☆</div>
-                                </div>
-                                <div>
-                                    <small class="text-muted d-block">人気度</small>
-                                    <div class="text-warning">★★★★☆</div>
-                                </div>
-                            </div>
-                            <button class="btn btn-outline-primary rounded-pill w-100">
-                                詳細を見る <i class="bi bi-arrow-right"></i>
-                            </button>
+                        <div class="card-body p-0">
+                            <h5 class="fw-bold mb-1" style="font-size: 1.1rem;">周辺機器</h5>
+                            <p class="text-muted small mb-2 d-none d-md-block">作業効率を向上させるアクセサリ</p>
+                            <p class="fw-bold mb-3" style="color: #444;">￥1,000 〜</p>
+                            <a href="#" class="btn btn-dark btn-sm rounded-0 px-4 stretched-link">DETAILS</a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
         <!-- サービス特徴 -->
         <section class="mb-5">
             <h2 class="text-center fw-bold section-title" style="color: var(--brown-color);">
-                <i class="bi bi-check-circle-fill text-success"></i> PetLifeの特徴
+                <i class="bi bi-check-circle-fill text-success"></i> PlayEdgeの特徴
             </h2>
-            <p class="text-center text-muted mb-5">ペットライフを全力でサポート</p>
+            <p class="text-center text-muted mb-5">あなたのゲーミング環境を全力でサポート</p>
 
             <div class="row g-4">
                 <div class="col-md-4">
@@ -459,9 +374,9 @@
                         <div class="feature-icon">
                             <i class="bi bi-book"></i>
                         </div>
-                        <h4 class="fw-bold mb-3">詳しい飼育ガイド</h4>
+                        <h4 class="fw-bold mb-3">詳しいデバイスガイド</h4>
                         <p class="text-muted">
-                            初心者にもわかりやすい飼育方法や健康管理の情報を豊富に掲載しています。
+                            初心者にもわかりやすい使用方法やゲーミングデバイス個々の情報を豊富に掲載しています。
                         </p>
                     </div>
                 </div>
@@ -472,7 +387,7 @@
                         </div>
                         <h4 class="fw-bold mb-3">Q&Aコミュニティ</h4>
                         <p class="text-muted">
-                            経験豊富な飼い主さんたちがあなたの疑問に答えてくれます。
+                            ネットユーザーがあなたの疑問に答えてくれます。
                         </p>
                     </div>
                 </div>
@@ -481,9 +396,9 @@
                         <div class="feature-icon">
                             <i class="bi bi-journal-text"></i>
                         </div>
-                        <h4 class="fw-bold mb-3">飼育記録管理</h4>
+                        <h4 class="fw-bold mb-3">デバイス管理</h4>
                         <p class="text-muted">
-                            ペットの成長や健康状態を記録して、大切な思い出を残せます。
+                            デバイスの使用時間やアップデートを確認して、使用しているデバイスの情報を確認できます。
                         </p>
                     </div>
                 </div>
@@ -493,18 +408,16 @@
         <!-- カテゴリから探す -->
         <section class="mb-5">
             <h2 class="text-center fw-bold section-title" style="color: var(--brown-color);">
-                <i class="bi bi-grid-3x3-gap-fill"></i> カテゴリから探す
+                <i class="bi bi-grid-3x3-gap-fill"></i> メーカーから探す
             </h2>
-            <p class="text-center text-muted mb-5">好みのペットカテゴリを選択</p>
+            <p class="text-center text-muted mb-5">好みのメーカーを選択</p>
 
             <div class="row g-3">
                 <div class="col-6 col-md-3">
                     <a href="#" class="text-decoration-none">
                         <div class="feature-card">
-                            <div class="feature-icon" style="background: rgba(251, 146, 60, 0.1); color: var(--secondary-color);">
-                                <i class="bi bi-heart-fill"></i>
-                            </div>
-                            <h5 class="fw-bold" style="color: var(--brown-color);">犬</h5>
+                            <img src="img/razer.png" style="width: auto; height: 80px;">
+                            <h5 class="fw-bold" style="color: var(--brown-color);">RAZER</h5>
                             <small class="text-muted">120種類</small>
                         </div>
                     </a>
@@ -512,33 +425,27 @@
                 <div class="col-6 col-md-3">
                     <a href="#" class="text-decoration-none">
                         <div class="feature-card">
-                            <div class="feature-icon" style="background: rgba(251, 146, 60, 0.1); color: #fb923c;">
-                                <i class="bi bi-balloon-heart"></i>
-                            </div>
-                            <h5 class="fw-bold" style="color: var(--brown-color);">猫</h5>
-                            <small class="text-muted">80種類</small>
+                            <img src="img/logo_icon_181377.png" style="width: auto; height: 80px;">
+                            <h5 class="fw-bold" style="color: var(--brown-color);">logicool</h5>
+                            <small class="text-muted">150種類</small>
                         </div>
                     </a>
                 </div>
                 <div class="col-6 col-md-3">
                     <a href="#" class="text-decoration-none">
                         <div class="feature-card">
-                            <div class="feature-icon" style="background: rgba(6, 182, 212, 0.1); color: #06b6d4;">
-                                <i class="bi bi-brightness-alt-high"></i>
-                            </div>
-                            <h5 class="fw-bold" style="color: var(--brown-color);">小動物</h5>
-                            <small class="text-muted">45種類</small>
+                            <img src="img/logo_rog.png" style="width: auto; height: 80px;">
+                            <h5 class="fw-bold" style="color: var(--brown-color);">ASUS ROG</h5>
+                            <small class="text-muted">100種類</small>
                         </div>
                     </a>
                 </div>
                 <div class="col-6 col-md-3">
                     <a href="#" class="text-decoration-none">
                         <div class="feature-card">
-                            <div class="feature-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">
-                                <i class="bi bi-cloud"></i>
-                            </div>
-                            <h5 class="fw-bold" style="color: var(--brown-color);">鳥類</h5>
-                            <small class="text-muted">35種類</small>
+                            <img src="img/msi.png" style="width: auto; height: 80px;">
+                            <h5 class="fw-bold" style="color: var(--brown-color);">MSI</h5>
+                            <small class="text-muted">70種類</small>
                         </div>
                     </a>
                 </div>
@@ -552,9 +459,9 @@
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <h5 class="fw-bold mb-3">
-                        <i class="bi bi-heart-fill text-danger"></i> PetLife
+                        <i class="bi bi-controller"></i> PlayEdge
                     </h5>
-                    <p>ペットとの幸せな暮らしを応援する情報サイト</p>
+                    <p>快適なプレイ環境をサポートする情報サイト</p>
                 </div>
                 <div class="col-md-2 mb-4">
                     <h6 class="fw-bold mb-3">サイト情報</h6>
@@ -583,10 +490,11 @@
                 </div>
             </div>
             <hr class="border-light">
-            <p class="text-center mb-0">&copy; 2024 PetLife. All rights reserved.</p>
+            <p class="text-center mb-0">&copy; 2024 PlayEdge. All rights reserved.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
